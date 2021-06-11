@@ -14,7 +14,7 @@
 
 $nameErr = $emailErr = $degreeErr  = $genderErr = $dateErr = $bloodErr= "";
 
-$name = $email =  $gender =$degree = $date=  $blood="";
+$name = $email =  $gender = $date=  $blood= $degree[0]= $degree[1]= $degree[2]= $degree[3]="";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
  {
@@ -54,22 +54,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   }
 
 
-  if (empty($_POST["$degree"]))
-   { 
-   	$degreeErr="Select degree";
-   }else
-    {
-    	$degree =test_input($_POST["degree"]);
+  if(!empty($_POST['degree']))
+  {
+    if (sizeof($_POST["degree"])<2){
+    $degreeErr="Please select at least two fields";
     }
+    else
+    {
+    $degreeErr="";
+    $degree=$_POST['degree'];
+    }
+  }else $degreeErr="Please select at least two fields";
 
 
-if (empty($_POST["$date"]))
-   { 
-   	$dateErr="Select a date";
-   }else
-    {
-    	$date =test_input($_POST["date"]);
-    }
+if (empty($_POST["date"])){
+    $dateErr="Date of birth is required";
+  }
+  else {
+    $dateErr = "" ;
+    $date= $_POST["date"];
+  }
+
+
+ if (($_POST['blood'])==""){
+    $bloodErr="Please select blood gorup";
+  } else 
+  {
+    $bloodErr="";
+    $blood=$_POST['blood'];
+  }
+
+
 
 
 }
@@ -104,31 +119,18 @@ function test_input($data)
   <span class="error">* <?php echo $genderErr;?></span><br>
   <br>
 
-Degree:
-<br><br>
-<input type ="checkbox" name="degree" <?php if (isset($degree) && $degree=="female") echo "checked";?> value="SSC">SSC
-<input type ="checkbox" name="$degree"<?php if (isset($degree) && $degree=="female") echo "checked";?> value="HSC">HSC
-<input type ="checkbox" name="$degree"<?php if (isset($degree) && $degree=="female") echo "checked";?> value="BSc">BSc
-<input type ="checkbox" name="$degree"<?php if (isset($degree) && $degree=="female") echo "checked";?> value="MSc">MSc
-<span class="error">* <?php echo $degreeErr;?></span><br>
-  <br>
+Degree: 
+  <input type="checkbox" name="degree[0]" value="SSC" <?php if(isset($_POST['degree'][0])) echo "checked"; ?> >SSC 
+  <input type="checkbox" name="degree[1]" value="HSC" <?php if(isset($_POST['degree'][1])) echo "checked"; ?> >HSC 
+  <input type="checkbox" name="degree[2]" value="BSc" <?php if(isset($_POST['degree'][2])) echo "checked"; ?> >BSc 
+  <input type="checkbox" name="degree[3]" value="MSc" <?php if(isset($_POST['degree'][3])) echo "checked"; ?> >MSc
+  <span class="error">* <?php echo $degreeErr;?></span> 
+  <br><br>
 
 Date:
-<input type="date" id="date" name="date"
-       value="dd-mm-yyyy"
-       min="01-01-1900" max="1-12-3030"><br><br>
-
-<span class="error">* <?php echo $dateErr;?></span><br>
-  <br>
-
-
-Blood Group:
-   <select id="Blood group" name="Blood group">
-    <option value="select "></option>
-    <option value="Blood group 1">O+</option>
-    <option value="Blood group 2">B+</option> 
-    <option value="Blood group 3">A+</option>
-  </select>
+<input type="date" id="date" name="date" min="1900-01-01" max="2020-12-31"
+      value="<?php echo $date;?>">
+       <span class="error">* <?php echo $dateErr;?></span>
   <br><br>
 
 
@@ -138,13 +140,20 @@ Blood Group:
 
 
 
-
-
-
-
-
-
-
+  Blood Group:
+   <select id="blood" name="blood">
+    <option value=""></option>
+ <option value="A+" <?php if($blood == 'O+'){ echo ' selected="blood"'; } ?> >O+</option>
+    <option value="B+" <?php if($blood == 'A+'){ echo ' selected="blood"'; } ?> >A+</option>
+    <option value="O+" <?php if($blood == 'B+'){ echo ' selected="blood"'; } ?> >B+</option>
+    <option value="AB+" <?php if($blood == 'AB+'){ echo ' selected="blood"'; } ?> >AB+</option>
+    <option value="O-" <?php if($blood == 'O-'){ echo ' selected="blood"'; } ?> >O-</option> 
+    <option value="A-" <?php if($blood == 'A-'){ echo ' selected="blood"'; } ?> >A-</option>
+    <option value="B-" <?php if($blood == 'B-'){ echo ' selected="blood"'; } ?> >B-</option>
+    <option value="AB-" <?php if($blood == 'AB-'){ echo ' selected="blood"'; } ?> >AB-</option>
+  </select> 
+  <span class="error">* <?php echo $bloodErr;?></span>
+  <br><br>
 
   <input type="submit" name="submit" value="Submit">  
 </form>
@@ -156,11 +165,22 @@ echo $name;
 echo "<br>";
 echo $email;
 echo "<br>";
-echo $degree;
-echo "<br>";
-echo $blood;
-echo "<br>";
 echo $gender;
+echo "<br>";
+echo " ";
+if (isset($_POST['degree'])){
+  foreach($_POST['degree'] as $value)
+  {
+    echo $value.' ';
+  }
+  }
+echo "<br>";
+echo $date;
+echo "<br>";
+
+echo $blood;
+
+
 ?>
 </body>
 </html>
