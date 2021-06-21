@@ -3,7 +3,7 @@
 <body>
 <?php
 $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir . basename($_FILES["  "]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -11,7 +11,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
+    echo "Image file - " . $check["mime"] . ".";
     $uploadOk = 1;
   } else {
     echo "File is not an image.";
@@ -26,7 +26,7 @@ if (file_exists($target_file)) {
 }
 
 
-if ($_FILES["fileToUpload"]["size"] > 990000) {
+if ($_FILES[" "]["size"]> 50000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
@@ -53,7 +53,7 @@ if ($uploadOk == 0) {
 <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method = "post" enctype = "multipart/form-data">
 <fieldset> 
 <legend>Profile Picture</legend>
-<img src = "image.png"><br>
+<img src = "image2.png"><br>
 <input type="file" name="fileToUpload" id="fileToUpload" value="Choose File">
 <hr/>
 <input type="submit"  name="submit">
