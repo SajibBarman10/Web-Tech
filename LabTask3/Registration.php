@@ -33,9 +33,9 @@
        
       else  
       {  
-           if(file_exists('Stored_data.json'))  
+           if(file_exists('data.json'))  
            {  
-                $current_data = file_get_contents('Stored_data.json');  
+                $current_data = file_get_contents('data.json');  
                 $array_data = json_decode($current_data, true);  
                 $extra = array(  
                      'name'               =>     $_POST['uname'],  
@@ -48,7 +48,7 @@
                 );  
                 $array_data[] = $extra;  
                 $final_data = json_encode($array_data);  
-                if(file_put_contents('Stored_data.json', $final_data))  
+                if(file_put_contents('data.json', $final_data))  
                 {  
                      $message = "File Appended Success fully";  
                 }  
@@ -72,7 +72,7 @@
 
 <tr><td>Password</td><td>:<input type = "password" name="pass" class="form-control"></br></td></tr>
 
-<tr><td>Confirm Password</td><td>:<input type = "text" name="cpass" class="form-control"></br></td></tr>
+<tr><td>Confirm Password</td><td>:<input type = "password" name="cpass" class="form-control"></br></td></tr>
 </table>
 <hr/>
 <fieldset>
