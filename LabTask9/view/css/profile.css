@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(188, 214, 214);
+}
+fieldset{
+    text-align: center;
+    margin: 10px;
+}
+legend{
+    font-size: 21px;
+    color: blueviolet;
+}
+a{
+
+    text-decoration: none;
+    
+    color: rgb(29, 27, 27);
+    transition: all .6s;
+    padding: 4px;
+    font-size: 18px;
+}
+a:hover{
+    background-color: rgb(129, 129, 123);
+}
+.fieldset1{
+    text-align: center;
+  background-color: rgb(224, 224, 224);
+  display: block;
+  margin-right: 400PX;
+  margin-left: 200PX;
+}
+.fieldset2{
+    text-align: center;
+  background-color: rgb(224, 224, 224);
+  display: block;
+
+}
