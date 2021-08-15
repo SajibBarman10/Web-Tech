@@ -1,0 +1,56 @@
+body{
+    background-color: rgb(188, 214, 214);
+}
+fieldset{
+    text-align: center;
+    margin: 10px;
+}
+legend{
+    font-size: 21px;
+    color: blueviolet;
+}
+a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: all .6s;
+    padding: 4px;
+    font-size: 18px;
+}
+a:hover{
+    background-color: rgb(24, 23, 22);
+}
+.submit{
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 23, 22);
+
+    margin: 5px;
+    font-size: 16px; 
+}
+h2{
+    font-size: 18px;
+    display: inline-block;
+    color: rgb(57, 52, 61);
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+input{
+    height: 20px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-style: outset;
+}
+.remember{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+table, th, td{
+    border: 1ps solid black;
+    text-align: center;
+}
+table{
+    width: 40%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
