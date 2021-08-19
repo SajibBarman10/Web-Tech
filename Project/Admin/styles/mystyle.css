@@ -1,0 +1,25 @@
+
+.btn-link{
+  
+  color:white;
+  padding-left:20px;
+  padding-right:20px;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-radius:2px;
+  font-family:calibri;
+  text-decoration:none;
+}
+.btn-link:hover{
+  background-color:rgb(0,100,0);
+}
+.btn-link:active{
+  background-color:green;
+}
+.h1 {
+ color: whitesmoke;
+}
+.f1 {
+ background-color:Aliceblue;
+
+}
